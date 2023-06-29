@@ -1,0 +1,12 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 880px) {
+  .form {
+    margin-bottom: 15px;
+  }
+}

@@ -1,0 +1,15 @@
+.profile__avatar {
+  display: block;
+  width: 120px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+
+  
+}
+
+@media (min-width: 880px) {
+  .profile__avatar {
+    margin-bottom: 0;
+  }
+}

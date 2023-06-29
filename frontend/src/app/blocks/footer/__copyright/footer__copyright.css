@@ -1,0 +1,14 @@
+.footer__copyright {
+  color: var(--color-gray);
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 48px 19px 33px;
+}
+
+@media (min-width: 880px) {
+  .footer__copyright {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 66px 0 56px;
+  }
+}

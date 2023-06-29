@@ -1,0 +1,11 @@
+.main {
+  width: calc(100% - 2 * 19px);
+  margin: 0 auto;
+  flex: auto;
+}
+
+@media (min-width: 880px) {
+  .main {
+    width: 100%;
+  }
+}

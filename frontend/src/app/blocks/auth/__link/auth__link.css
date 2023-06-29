@@ -1,0 +1,10 @@
+.auth__link {
+  text-decoration: none;
+  color: var(--color-second);
+}
+
+@media (min-width:880px) {
+  .auth__link:hover {
+    opacity: 0.6;
+  }
+}
