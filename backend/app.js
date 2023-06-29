@@ -1,5 +1,6 @@
 // Импорты пакетов
 const express = require('express');
+// eslint-disable-next-line import/no-extraneous-dependencies
 const cors = require('cors');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
@@ -15,7 +16,20 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 // Создать приложение
 const app = express();
 
-app.use(cors({ 'Access-Control-Allow-Credentials': true }));
+const whitelist = ['https://mesto-my.valerkamade.ru'];
+app.options('*', cors());
+const corsOptions = {
+  credentials: true,
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json()); // переводит входящие запросы в json
 app.use(helmet()); // защита от веб-уязвимостей
