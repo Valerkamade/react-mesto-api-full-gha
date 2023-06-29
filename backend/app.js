@@ -16,7 +16,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 // Создать приложение
 const app = express();
 
-const whitelist = ['https://mesto-my.valerkamade.ru'];
+const whitelist = ['http://localhost:3000', 'https://mesto-my.valerkamade.ru'];
 app.options('*', cors());
 const corsOptions = {
   credentials: true,
