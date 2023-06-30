@@ -16,20 +16,20 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 // Создать приложение
 const app = express();
 
-const whitelist = ['http://localhost:3000', 'https://mesto-my.valerkamade.ru'];
-app.options('*', cors());
-const corsOptions = {
-  credentials: true,
-  origin: (origin, callback) => {
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-};
+// const whitelist = ['http://localhost:3000', 'https://mesto-my.valerkamade.ru'];
+// app.options('*', cors());
+// const corsOptions = {
+//   credentials: true,
+//   origin: (origin, callback) => {
+//     if (whitelist.indexOf(origin) !== -1 || !origin) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+// };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.json()); // переводит входящие запросы в json
 app.use(helmet()); // защита от веб-уязвимостей
