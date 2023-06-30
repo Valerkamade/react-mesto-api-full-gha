@@ -90,8 +90,8 @@ module.exports.login = (req, res, next) => {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
         sameSite: 'Lax',
-        path: '/*',
-        // secure: true,
+        path: '/',
+        secure: true,
       })
         .send({ message: 'Авторизация прошла успешно' });
     })
