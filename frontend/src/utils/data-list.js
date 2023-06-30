@@ -94,7 +94,7 @@ const formRegister = {
       type: 'password',
       name: 'password',
       placeholder: 'Пароль',
-      minLength: '4',
+      minLength: '8',
       maxLength: '40',
     },
   ]
@@ -117,7 +117,7 @@ const formLogin = {
       type: 'password',
       name: 'password',
       placeholder: 'Пароль',
-      minLength: '4',
+      minLength: '8',
       maxLength: '40',
     },
   ]

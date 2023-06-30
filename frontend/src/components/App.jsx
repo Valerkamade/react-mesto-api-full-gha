@@ -122,9 +122,9 @@ function App() {
     setIsInfoTooltipPopupOpen(true);
   }
 
-  function handleInfoTooltipNegative({ error, message }) {
+  function handleInfoTooltipNegative({ message }) {
     setIsInfoTooltipPopupOpen(true);
-    setErrorMessage(message || error);
+    setErrorMessage(message);
   }
 
   function closeAllPopups() {
@@ -134,7 +134,7 @@ function App() {
     setIsImagePopupOpen(false);
     setIsConfirmationPopupOpen(false);
     setIsInfoTooltipPopupOpen(false);
-    setErrorMessage('');
+    // setErrorMessage('');
   }
 
   function handleCardClick(card) {
