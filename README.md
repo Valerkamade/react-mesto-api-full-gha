@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.22.146
+IP 051.250.100.244
 
 Frontend [https://mesto-my.valerkamade.ru/](https://mesto-my.valerkamade.ru/)
 
