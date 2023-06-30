@@ -73,7 +73,7 @@ function App() {
         setEmailUser(valueLogin.email);
       })
       .catch((err) => {
-        return err.then((res) => handleInfoTooltipNegative(res));
+        return handleInfoTooltipNegative(err);
       })
       .finally(setIsLoading(false));
   }

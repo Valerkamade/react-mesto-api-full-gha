@@ -5,7 +5,7 @@ function isOk(res) {
   if (res.ok) {
     return res.json();
   }
-  return Promise.reject(res.json().then(res => res));
+  return res.json().then(res => { throw res });
 }
 
 export async function register({ password, email }) {
@@ -15,6 +15,7 @@ export async function register({ password, email }) {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
+    credentials: 'include',
     body: JSON.stringify({ password, email })
   });
   const res_1 = await isOk(res);
@@ -28,6 +29,7 @@ export const authorize = async ({ email, password }) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
+    credentials: 'include',
     body: JSON.stringify({ email, password })
   });
   const data = await isOk(res);
@@ -42,7 +44,8 @@ export const checkToken = async () => {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-    }
+    },
+    credentials: 'include',
   });
   const data = await isOk(res);
   return data;
