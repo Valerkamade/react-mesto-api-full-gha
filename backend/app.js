@@ -6,8 +6,6 @@ const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 require('dotenv').config();
 
-console.log(process.env.NODE_ENV);
-
 // Импорты самописных данных
 const { PORT } = require('./utils/config');
 const responseError = require('./middlewares/response-error');
