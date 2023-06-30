@@ -6,12 +6,11 @@ import plug from '../images/plug.svg'
 
 export default function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   const currentUser = useContext(CurrentUserContext);
-
-  const isLiked = card.likes.some((card) => card._id === currentUser._id);
+  const isLiked = card.likes.some((card) => card === currentUser._id);
   const cardLikeButtonClassName = `gallery__button-like button ${
     isLiked && 'gallery__button-like_active'
   }`;
-  const isOwn = card.owner._id === currentUser._id;
+  const isOwn = card.owner === currentUser._id;
 
   function handleClick() {
     onCardClick(card);

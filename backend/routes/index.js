@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 const NotFoundError = require('../errors/not-found-err');
 const { validateUserAuth, validateUserCreate } = require('../utils/validate');
-const { login, createUser } = require('../controllers/users');
+const { login, createUser, logout } = require('../controllers/users');
 const { auth } = require('../middlewares/auth');
 
 // Запросы на авторизацию и регистрацию
@@ -23,6 +23,9 @@ router.use(auth);
 // Запросы к серверу по роутам users и cards
 router.use('/users', require('./users'));
 router.use('/cards', require('./cards'));
+
+// Запрос на выход
+router.use('/signout', logout);
 
 // .оповещение об ошибке по несуществующим роутам
 router.use('*', (req, res, next) => {

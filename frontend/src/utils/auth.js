@@ -40,7 +40,19 @@ export const authorize = async ({ email, password }) => {
 export const checkToken = async () => {
   const res = await fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
-    // credentials: 'include',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+  });
+  const data = await isOk(res);
+  return data;
+}
+
+export const logout = async () => {
+  const res = await fetch(`${BASE_URL}/signout`, {
+    method: 'GET',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',

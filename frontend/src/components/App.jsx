@@ -64,10 +64,8 @@ function App() {
     setIsLoading(true);
     auth
       .authorize(valueLogin)
-      .then((data) => {
+      .then(() => {
         navigate('/', { replace: true });
-        console.log(data);
-        // localStorage.setItem('email', valueLogin.email);
         setLoggedIn(true);
         setValueLogin({});
         setEmailUser(valueLogin.email);
@@ -82,10 +80,7 @@ function App() {
     auth
       .checkToken()
       .then((res) => {
-        // const email= localStorage.getItem('email');
-
         setLoggedIn(true);
-        // navigate("/", { replace: true });
         setEmailUser(res.email);
       })
       .catch((err) => console.log(err));
@@ -93,7 +88,6 @@ function App() {
 
   useEffect(() => {
     tokenCheck();
-    console.log(document.cookie);
   }, []);
 
   useEffect(() => {
@@ -101,7 +95,7 @@ function App() {
       Promise.all([api.getUserInfoApi(), api.getInitialCardsApi()])
         .then(([user, card]) => {
           setCurrentUser(user);
-          setCards(card);
+          setCards(card.reverse());
           setLoadingContent(false);
         })
         .catch((err) => console.log(err));
@@ -148,7 +142,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((item) => item._id === currentUser._id);
+    const isLiked = card.likes.some((item) => item === currentUser._id);
     api
       .toggleLikeCardApi(card._id, isLiked)
       .then((newCard) => {
@@ -225,9 +219,15 @@ function App() {
     setSelectedCard(card);
   }
 
+  function onLogout() {
+    auth.logout()
+    .then(() => setLoggedIn(false))
+    .catch(err => console.log(err))
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <Header email={emailUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      <Header email={emailUser} loggedIn={loggedIn} onLogout={onLogout} />
       <Routes>
         <Route
           path='/'

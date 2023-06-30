@@ -1,11 +1,12 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
-const { JWT_SECRET, STATUS_OK, ERROR_CODE_UNIQUE } = require('../utils/constants');
+const { STATUS_OK, ERROR_CODE_UNIQUE } = require('../utils/constants');
 const User = require('../models/user');
 const NotFoundError = require('../errors/not-found-err');
 const IncorrectData = require('../errors/incorrect-data');
 const NotUniqueData = require('../errors/unique-data');
+const { SECRET } = require('../utils/config');
 
 const { ValidationError } = mongoose.Error;
 
@@ -51,6 +52,7 @@ module.exports.createUser = (req, res, next) => {
       }
     });
 };
+
 const updateUserData = (req, res, next, param) => {
   const { _id } = req.user;
   User.findByIdAndUpdate(_id, param, { new: true, runValidators: true })
@@ -81,16 +83,21 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        JWT_SECRET,
+        SECRET,
         { expiresIn: '7d' },
       );
       res.cookie('token', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
         sameSite: 'None',
-        // secure: true,
+        secure: true,
       })
         .send({ message: 'Авторизация прошла успешно' });
     })
     .catch(next);
+};
+
+module.exports.logout = (req, res) => {
+  res.clearCookie('token')
+    .send({ message: 'Выход' });
 };

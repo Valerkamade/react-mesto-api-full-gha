@@ -15,8 +15,6 @@ export default function Main({
   onCardLike,
   onCardDelete,
   cards,
-  isLoading,
-  loggedIn,
   isLoadingContent,
 }) {
   const currentUser = useContext(CurrentUserContext);

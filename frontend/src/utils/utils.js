@@ -1,3 +1,5 @@
+import { BASE_URL } from "./auth";
+
 // Данные для валидации
 const objectData = {
   formSelector: '.popup__form',
@@ -10,7 +12,7 @@ const objectData = {
 
 // Данные для запроса на сервер
 const apiConfig = {
-  baseUrl: 'https://api.mesto-my.valerkamade.ru',
+  baseUrl: BASE_URL,
   // baseUrl: 'http://localhost:3001',
   credentials: 'include',
   headers: {

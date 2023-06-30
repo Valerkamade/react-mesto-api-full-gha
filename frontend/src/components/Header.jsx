@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../images/logo.svg';
 
-export default function Header({ loggedIn, email, setLoggedIn }) {
+export default function Header({ loggedIn, email, onLogout }) {
   const location = useLocation();
   const navigate = useNavigate();
   const [menuActive, setMenuActive] = useState(false);
@@ -10,10 +10,9 @@ export default function Header({ loggedIn, email, setLoggedIn }) {
   const path = location.pathname === '/sign-in' ? '/sign-up' : '/sign-in';
 
   function onSignOut() {
-    localStorage.removeItem('email');
     navigate('/sign-in', { replace: 'true' });
     setMenuActive(false);
-    setLoggedIn(false);
+    onLogout();
   }
 
   function handleMenuClick() {
