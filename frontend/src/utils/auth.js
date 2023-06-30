@@ -1,4 +1,5 @@
-export const BASE_URL = 'https://api.mesto-my.valerkamade.ru';
+export const BASE_URL = 'http://api.mesto-my.valerkamade.ru';
+// export const BASE_URL = 'http://localhost:3001';
 
 function isOk(res) {
   if (res.ok) {
@@ -34,13 +35,12 @@ export const authorize = async ({ email, password }) => {
   return data;
 };
 
-export const checkToken = async (token) => {
+export const checkToken = async () => {
   const res = await fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
     }
   });
   const data = await isOk(res);

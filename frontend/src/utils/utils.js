@@ -11,6 +11,7 @@ const objectData = {
 // Данные для запроса на сервер
 const apiConfig = {
   baseUrl: 'https://api.mesto-my.valerkamade.ru',
+  // baseUrl: 'http://localhost:3001',
   credentials: 'include',
   headers: {
     'Content-Type': 'application/json'

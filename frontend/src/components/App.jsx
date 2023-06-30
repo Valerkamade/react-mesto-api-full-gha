@@ -65,13 +65,12 @@ function App() {
     auth
       .authorize(valueLogin)
       .then((data) => {
-       
-          navigate('/', { replace: true });
-          localStorage.setItem('email', valueLogin.email);
-          setLoggedIn(true);
-          setValueLogin({});
-          setEmailUser(valueLogin.email);
-        
+        navigate('/', { replace: true });
+        console.log(data);
+        // localStorage.setItem('email', valueLogin.email);
+        setLoggedIn(true);
+        setValueLogin({});
+        setEmailUser(valueLogin.email);
       })
       .catch((err) => {
         return err.then((res) => handleInfoTooltipNegative(res));
@@ -80,16 +79,21 @@ function App() {
   }
 
   function tokenCheck() {
-    const email= localStorage.getItem('email');
-    if (email) {
-      setLoggedIn(true);
-      // navigate("/", { replace: true });
-      setEmailUser(email);
-    }
+    auth
+      .checkToken()
+      .then((res) => {
+        // const email= localStorage.getItem('email');
+
+        setLoggedIn(true);
+        // navigate("/", { replace: true });
+        setEmailUser(res.email);
+      })
+      .catch((err) => console.log(err));
   }
 
   useEffect(() => {
     tokenCheck();
+    console.log(document.cookie);
   }, []);
 
   useEffect(() => {
