@@ -1,10 +1,10 @@
 // Импорты пакетов
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
-require('dotenv').config();
 
 // Импорты самописных данных
 const { PORT } = require('./utils/config');

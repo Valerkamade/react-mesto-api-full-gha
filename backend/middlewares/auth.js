@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { SECRET } = require('../utils/constants');
+const { SECRET } = require('../utils/config');
 const NotFoundAuth = require('../errors/not-found-auth');
 
 const handleAuthError = (req, res, next) => next(new NotFoundAuth('Необходима авторизация'));
