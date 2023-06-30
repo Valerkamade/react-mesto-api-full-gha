@@ -24,6 +24,7 @@ class Api {
   // метод запроса данных карточек с сервера
   getInitialCardsApi() {
     return this._request(`${this._baseUrl}/cards`, {
+      headers: this._headers,
       credentials: this._credentials,
     })
   }
@@ -31,6 +32,7 @@ class Api {
   // Метод запроса данных пользователя с сервера
   getUserInfoApi() {
     return this._request(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
       credentials: this._credentials,
     })
   }
@@ -39,8 +41,8 @@ class Api {
   setUserInfoApi({ name, about }) {
     return this._request(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
-      credentials: this._credentials,
       headers: this._headers,
+      credentials: this._credentials,
       body: JSON.stringify({
         name: name,
         about: about
@@ -52,8 +54,8 @@ class Api {
   setUserAvatarApi({ avatar }) {
     return this._request(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
-      credentials: this._credentials,
       headers: this._headers,
+      credentials: this._credentials,
       body: JSON.stringify({
         avatar: avatar
       })
@@ -64,8 +66,8 @@ class Api {
   addNewCardApi({ name, link }) {
     return this._request(`${this._baseUrl}/cards`, {
       method: 'POST',
-      credentials: this._credentials,
       headers: this._headers,
+      credentials: this._credentials,
       body: JSON.stringify({
         name: name,
         link: link
@@ -77,8 +79,8 @@ class Api {
   deleteCardApi(cardId) {
     return this._request(`${this._baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
+      headers: this._headers,
       credentials: this._credentials,
-      headers: this._headers
     })
   }
 
@@ -87,8 +89,8 @@ class Api {
     if (!isLiked) {
       return this._request(`${this._baseUrl}/cards/${cardID}/likes`, {
         method: 'PUT',
+        headers: this._headers,
         credentials: this._credentials,
-        headers: this._headers
       })
     } else {
       return this._request(`${this._baseUrl}/cards/${cardID}/likes`, {

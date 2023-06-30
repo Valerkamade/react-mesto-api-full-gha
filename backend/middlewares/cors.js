@@ -2,7 +2,8 @@
 const allowedCors = [
   'https://mesto-my.valerkamade.ru',
   'http://mesto-my.valerkamade.ru',
-  'localhost:3000',
+  'https://localhost:3000',
+  'http://localhost:3000',
 ];
 
 module.exports = (req, res, next) => {

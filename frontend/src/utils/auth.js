@@ -38,6 +38,7 @@ export const authorize = async ({ email, password }) => {
 export const checkToken = async () => {
   const res = await fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
+    // credentials: 'include',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
