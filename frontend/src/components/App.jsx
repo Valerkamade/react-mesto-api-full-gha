@@ -220,9 +220,10 @@ function App() {
   }
 
   function onLogout() {
-    auth.logout()
-    .then(() => setLoggedIn(false))
-    .catch(err => console.log(err))
+    auth
+      .logout()
+      .then(() => setLoggedIn(false))
+      .catch((err) => console.log(err));
   }
 
   return (
