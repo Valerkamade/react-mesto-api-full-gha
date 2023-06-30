@@ -1,7 +1,7 @@
 // Импорты пакетов
 const express = require('express');
-// eslint-disable-next-line import/no-extraneous-dependencies
-const cors = require('cors');
+// // eslint-disable-next-line import/no-extraneous-dependencies
+// const cors = require('cors');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
@@ -12,28 +12,31 @@ const { PORT } = require('./utils/config');
 const responseError = require('./middlewares/response-error');
 const router = require('./routes');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const cors = require('./middlewares/cors');
 
 // Создать приложение
 const app = express();
 
-const whitelist = ['http://localhost:3000', 'https://mesto-my.valerkamade.ru'];
-app.options('*', cors());
-const corsOptions = {
-  credentials: true,
-  origin: (origin, callback) => {
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-};
+// const whitelist = ['http://localhost:3000', 'https://mesto-my.valerkamade.ru'];
+// app.options('*', cors());
+// const corsOptions = {
+//   credentials: true,
+//   origin: (origin, callback) => {
+//     if (whitelist.indexOf(origin) !== -1 || !origin) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 app.use(express.json()); // переводит входящие запросы в json
 app.use(helmet()); // защита от веб-уязвимостей
 app.use(cookieParser()); // для извлечения данных из куков
+
+app.use(cors);
 
 // Подключение к базе данных
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
