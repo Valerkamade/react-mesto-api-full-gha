@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://api.mesto-my.valerkamade.ru';
+export const BASE_URL = 'https://api.mesto-my.valerkamade.ru';
 // export const BASE_URL = 'http://localhost:3001';
 
 function isOk(res) {
