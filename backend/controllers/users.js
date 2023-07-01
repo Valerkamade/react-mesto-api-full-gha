@@ -102,3 +102,26 @@ module.exports.logout = (req, res) => {
   res.clearCookie('token')
     .send({ message: 'Выход' });
 };
+
+// const jwt = require('jsonwebtoken');
+// const YOUR_JWT = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDllZmI1M2YyZGZhNDY1Nzc3Zjk5NWIiLCJpYXQiOjE2ODgxODU5NTcsImV4cCI6MTY4ODc5MDc1N30.ZmPhu7z9cGTOsKxsizYhY86UsnQ1GZzYM65C-KWGxaA'; // вставьте сюда JWT, который вернул публичный сервер
+// const SECRET_KEY_DEV = '6f241197a7c4082fb0426e484d2cc9c2d38f670e9c15a0d04d152f1fbeff13ff'; // вставьте сюда секретный ключ для разработки из кода
+// try {
+//   const payload = jwt.verify(YOUR_JWT, SECRET_KEY_DEV);
+//   console.log('\x1b[31m%s\x1b[0m', `
+// Надо исправить. В продакшне используется тот же
+// секретный ключ, что и в режиме разработки.
+// `);
+// } catch (err) {
+//   if (err.name === 'JsonWebTokenError' && err.message === 'invalid signature') {
+//     console.log(
+//       '\x1b[32m%s\x1b[0m',
+//       'Всё в порядке. Секретные ключи отличаются'
+//     );
+//   } else {
+//     console.log(
+//       '\x1b[33m%s\x1b[0m',
+//       'Что-то не так',
+//       err);
+//   }
+// }

@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 
 // Импорты самописных данных
-const { PORT } = require('./utils/config');
+const { PORT, MONGO } = require('./utils/config');
 const responseError = require('./middlewares/response-error');
 const router = require('./routes');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -22,8 +22,10 @@ app.use(cookieParser()); // для извлечения данных из кук
 
 app.use(cors);
 
+console.log(process.env.NODE_ENV);
+
 // Подключение к базе данных
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
+mongoose.connect(MONGO);
 
 app.use(requestLogger); // подключаем логгер запросов
 
