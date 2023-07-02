@@ -22,7 +22,7 @@ app.use(cookieParser()); // для извлечения данных из кук
 
 app.use(cors);
 
-console.log(process.env.NODE_ENV);
+console.log(process.env.MONGO);
 
 // Подключение к базе данных
 mongoose.connect(MONGO);

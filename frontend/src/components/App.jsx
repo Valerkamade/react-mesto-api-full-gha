@@ -122,9 +122,9 @@ function App() {
     setIsInfoTooltipPopupOpen(true);
   }
 
-  function handleInfoTooltipNegative({ message }) {
+  function handleInfoTooltipNegative({ error, message }) {
     setIsInfoTooltipPopupOpen(true);
-    setErrorMessage(message);
+    setErrorMessage(message || error);
   }
 
   function closeAllPopups() {
