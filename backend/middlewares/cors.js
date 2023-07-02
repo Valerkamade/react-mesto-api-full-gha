@@ -4,9 +4,7 @@ const allowedCors = [
   'http://mesto-my.valerkamade.ru',
   'https://localhost:3000',
   'http://localhost:3000',
-  'https://praktikum.tk',
-  'http://praktikum.tk',
-  'web-autotest-public/proj15/bin/test-endpoints.sh',
+  'localhost:3000',
 ];
 
 module.exports = (req, res, next) => {

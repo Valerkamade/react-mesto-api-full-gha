@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { SECRET } = require('../utils/config');
+const { JWT_SECRET } = require('../utils/config');
 const NotFoundAuth = require('../errors/not-found-auth');
 
 const handleAuthError = (req, res, next) => next(new NotFoundAuth('Необходима авторизация'));
@@ -12,7 +12,7 @@ module.exports.auth = (req, res, next) => {
     if (!token) {
       return handleAuthError(req, res, next);
     }
-    payload = jwt.verify(token, SECRET);
+    payload = jwt.verify(token, JWT_SECRET);
   } catch (err) {
     return handleAuthError(req, res, next);
   }
