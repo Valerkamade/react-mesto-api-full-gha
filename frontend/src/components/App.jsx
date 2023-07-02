@@ -52,6 +52,7 @@ function App() {
           setValueRegister({});
         })
         .catch((err) => {
+          console.log(err);
           return handleInfoTooltipNegative(err);
         });
     }
@@ -119,6 +120,7 @@ function App() {
   }
 
   function handleInfoTooltipPositive() {
+    setErrorMessage('');
     setIsInfoTooltipPopupOpen(true);
   }
 
@@ -134,7 +136,6 @@ function App() {
     setIsImagePopupOpen(false);
     setIsConfirmationPopupOpen(false);
     setIsInfoTooltipPopupOpen(false);
-    // setErrorMessage('');
   }
 
   function handleCardClick(card) {
