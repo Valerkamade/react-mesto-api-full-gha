@@ -4,6 +4,7 @@ const allowedCors = [
   'http://mesto-my.valerkamade.ru',
   'https://localhost:3001',
   'http://localhost:3001',
+  'https://www.getpostman.com/collections/155d834872acb2acab87',
 ];
 
 module.exports = (req, res, next) => {
