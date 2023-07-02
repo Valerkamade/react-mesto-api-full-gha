@@ -9,6 +9,7 @@
   border: none;
   border-radius: 2px;
   background-color: var(--color-second);
+  width: 100%;
 }
 
 .form__button-save_type_auth:not([disabled]):hover {
