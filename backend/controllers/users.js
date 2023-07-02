@@ -6,7 +6,7 @@ const User = require('../models/user');
 const NotFoundError = require('../errors/not-found-err');
 const IncorrectData = require('../errors/incorrect-data');
 const NotUniqueData = require('../errors/unique-data');
-const { JWT_SECRET } = require('../utils/config');
+const { JWT_SECRET, NODE_ENV } = require('../utils/config');
 
 const { ValidationError } = mongoose.Error;
 
@@ -90,7 +90,7 @@ module.exports.login = (req, res, next) => {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
         sameSite: 'none',
-        secure: true,
+        secure: NODE_ENV === 'production',
       })
         .send({ message: 'Авторизация прошла успешно' });
     })
